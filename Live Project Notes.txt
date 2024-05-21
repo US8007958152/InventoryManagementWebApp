@@ -1,0 +1,181 @@
+
+************************************* Live Project Training ***************************
+1. Desktop Application
+
+2. Web Application
+e.g. Banking application, e-coomerce etc.
+
+3. Mobile Application
+
+4. Embeded Application
+Software + Hardware
+
+ATM - Embeded application
+
+
+1. MVC - architecural pattern
+2. Web API
+3. Razor Pages
+
+1. MVC Framework
+2. Web API Framework
+3. Razor Pages Framework
+.cshtml
+.cs
+
+slim
+Web Form
+
+.aspx
+.csaspx
+
+MVC
+MVC Framework
+
+
+
+Development Environment - Dev Team
+Dev Database
+
+QA Environment - QA Team
+QA Database
+
+Staging Environment - Group of people
+Staging Database
+
+Production Environment - Live Environment
+Prod Database
+
+
+
+Inventory Management System
+
+1. User
+    1. Admin User
+	2. General User
+	3. Super Admin User
+	CRUD - Create, Read, Update and Delete
+	1. Add
+	2. Update
+	3. Delete
+	4. Get List
+	
+	UserType
+			Id, Title
+	
+	User 
+		UserId, Password, FullName, MobileNumber, UserTypeId
+	
+2. Customer
+
+3. Stock 
+4. Invoice
+5. Dashboard
+6. Product
+	Product Types
+		1. Stationary
+			a. Books
+			b. Pens
+			c. Pencils
+		2. Furtiture
+		3. Grossory
+
+7. Order
+
+User --> Product --> Stock --> Customer --> Invoice --> Dashboard
+
+
+
+MVC -
+
+
+2 Tier Architecure
+3 - Tier atchi
+n tier architecture
+
+Repostory
+
+
+1. DataAccessLayer
+2. BusinessLogicLayer
+3. UI Layer
+4. Model ENtities
+
+
+1. Code Reusability
+2. Easy to maintain
+3. Security
+4. Loosely Couple
+
+Git 
+Git Hub
+
+
+1. User
+    1. Admin User
+	2. General User
+	3. Super Admin User
+	
+CRUD - Create, Read, Update and Delete
+	1. Add
+	2. Update
+	3. Delete
+	4. Get List
+	
+	
+	UserType
+		SuperAdmin
+		Admin
+		General
+	
+	City
+	  Pune
+	  Mumbai
+	  Nagpur
+	  Ahmedabad
+	  
+	 State
+		 Maharashtra
+		 Gujrat
+		 Telangana
+	 
+	 Country
+		 India
+		 China
+		 USA
+		 Russia
+	
+	User
+		UserId,
+		UserTypeId,
+		Name,
+		MobileNumber,
+		EmailID,
+		Password,
+		CurrentAddress,
+		PermanentAddress,
+		CityId,
+		StateId,
+		CountryId,
+		OTP,
+		OTPCreatedOn,
+		IsActive,
+		IsDeleted,
+		CreatedDate,
+		CreatedBy,
+		UpdatedDate,
+		UpdatedBy
+		
+		
+		SofteDelete and Hard Deleted
+		
+		
+		
+		
+	Product Struture --> Database --> Business Logic Layer  -->  UI Layer
+												|
+												|												
+										DataAccessLayer
+										
+										
+		Server=.\\SQLExpress;Database=InventoryDB;Trusted_Connection=True;

@@ -1,0 +1,72 @@
+﻿<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">New User</h5>
+
+        <!-- Vertical Form -->
+        <form class="row g-3">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <label for="txtName" class="form-label">Name</label>
+                <input type="text" class="form-control" id="txtName">
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <label for="ddlUserType" class="form-label">User Type</label>
+                <select class="form-control" id="ddlUserType">
+                   
+                </select>
+               
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <label for="txtMobileNumber" class="form-label">Mobile Number</label>
+                <input type="text"  class="form-control" maxlength="10" id="txtMobileNumber">
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <label for="txtEmailId" class="form-label">EmailId</label>
+                <input type="text" class="form-control" id="txtEmailId">
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <label for="txtPassword" class="form-label">Password</label>
+                <input type="password" class="form-control" id="txtPassword">
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <label for="txtCurrentAddress" class="form-label">Current Address</label>
+                <input type="text" class="form-control" id="txtCurrentAddress">
+
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <label for="txtPermanentAddress" class="form-label">Permanent Address</label>
+                <input type="text" class="form-control" id="txtPermanentAddress">
+
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <label for="ddlCountry" class="form-label">Country</label>
+                 <select class="form-control" id="ddlCountry">
+                    <option value=""> --Select-- </option>
+                </select>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <label for="ddlState" class="form-label">State</label>
+                <select class="form-control" id="ddlState" >
+                    <option value=""> --Select-- </option>
+                </select>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <label for="ddlCity" class="form-label">City</label>
+                 <select class="form-control" id="ddlCity">
+                    <option value=""> --Select-- </option>
+                </select>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <label for="txtZipCode" class="form-label">ZipCode</label>
+                <input type="text" class="form-control" id="txtZipCode" >
+            </div>
+            <div class="text-center">
+                <button type="button" id="btnSubmit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+        </form><!-- Vertical Form -->
+
+    </div>
+</div>
+@section Scripts{
+   <script src="~/PageJS/User/Add.js"></script>
+}
