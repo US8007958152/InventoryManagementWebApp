@@ -49,12 +49,26 @@ namespace InventoryWebApp.Controllers
         {
             try
             {
+                string statusMessage = string.Empty;
                 int statusCode = _user.Add(user);
-                return new JsonResult(statusCode);
+
+                switch(statusCode)
+                {
+                    case -301:
+                        statusMessage = "Email Id already exists";
+                        break;
+                    case -302:
+                        statusMessage = "Mobile number already exists";
+                        break;
+                    default:
+                        statusMessage = "User has been registred successfully!";
+                        break;
+                }
+                return new JsonResult(new { StatusCode = statusCode,StatusMessage = statusMessage});
             }
             catch(Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { StatusCode = -500, StatusMessage = ex.Message } );
             }            
         }
 

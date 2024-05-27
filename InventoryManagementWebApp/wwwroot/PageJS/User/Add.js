@@ -82,6 +82,67 @@
 
     // Save User Details
     $("#btnSubmit").click(function () {
+
+        let userName = $("#txtName").val().trim();
+        if (userName == '') {
+            $("#txtName").css("border", "red solid 1px");
+            return;
+        }
+        else
+            $("#txtName").css("border", "#dee2e6 solid 1px");
+
+        let userTypeId = $("#ddlUserType").val().trim();
+        if (userTypeId == '') {
+            $("#ddlUserType").css("border", "red solid 1px");
+            return;
+        }
+        else
+            $("#ddlUserType").css("border", "#dee2e6 solid 1px");
+
+        let emailId = $("#txtEmailId").val().trim();
+        if (emailId == '' || !isEmail(emailId)) {
+            $("#txtEmailId").css("border", "red solid 1px");
+            return;
+        }
+        //else if (isEmail(emailId)) {
+        //    $("#txtEmailId").css("border", "red solid 1px");
+        //    return;
+        //}
+        else
+            $("#txtEmailId").css("border", "#dee2e6 solid 1px");
+
+        let password = $("#txtPassword").val().trim();
+        if (password == '') {
+            $("#txtPassword").css("border", "red solid 1px");
+            return;
+        }
+        else
+            $("#txtPassword").css("border", "#dee2e6 solid 1px");
+
+        let country = $("#ddlCountry").val().trim();
+        if (country == '') {
+            $("#ddlCountry").css("border", "red solid 1px");
+            return;
+        }
+        else
+            $("#ddlCountry").css("border", "#dee2e6 solid 1px");
+
+        let state = $("#ddlState").val().trim();
+        if (state == '') {
+            $("#ddlState").css("border", "red solid 1px");
+            return;
+        }
+        else
+            $("#ddlState").css("border", "#dee2e6 solid 1px");
+
+        let city = $("#ddlCity").val().trim();
+        if (city == '') {
+            $("#ddlCity").css("border", "red solid 1px");
+            return;
+        }
+        else
+            $("#ddlCity").css("border", "#dee2e6 solid 1px");
+
         let userDetails = {
             "Id": 0,
             "UserTypeId": $("#ddlUserType").val(),
@@ -102,9 +163,14 @@
             type: "POST",
             url: "/User/Add",
             data: { user: userDetails },
+            beforeSend: function () {
+                $("#dvLoader").show();
+            },
             success: function (respone) {
-                if (respone > 0) {
-                    alert("User registered successfully!");
+                console.log(respone);
+                if (respone.statusCode > 0) {
+                    toastr.success(respone.statusMessage);
+                   // alert(respone.statusMessage);
                     $("#ddlUserType").val('');
                     $("#txtName").val('');
                     $("#txtMobileNumber").val('');
@@ -119,15 +185,19 @@
                     $("#txtZipCode").val('');
                 }
                 else {
-
+                    toastr.error(respone.statusMessage);
                 }
             },
-            error: function () {
-
+            error: function (error) {
+                toastr.error(error.responseText);
             },
             complete: function () {
-
+                $("#dvLoader").hide();
             }
         })
     })
 })
+function isEmail(email) {
+    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return regex.test(email);
+}
