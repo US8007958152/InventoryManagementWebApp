@@ -13,6 +13,7 @@ namespace BusinessLogicLayer.Users
         bool Update(User user);
         bool Delete(int userId);
         User GetUser(int userId);
+        UserProfile GetUserProfile(int userId);
         List<User> GetUsers();
     }
 }

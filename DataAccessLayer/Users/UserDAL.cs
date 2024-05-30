@@ -80,6 +80,52 @@ namespace DataAccessLayer.Users
             throw new NotImplementedException();
         }
 
+        public UserProfile GetUserProfile(int userId)
+        {
+            try
+            {
+                // SQL COnnection
+                // Open COnnection
+                // Sql Command --> SQL Query or stored procedure
+                // Execute SQL
+                using (SqlConnection con = new SqlConnection(_inventoryDBConnString))
+                {
+                    if (con.State == ConnectionState.Closed)
+                        con.Open();
+                    using (SqlCommand cmd = new SqlCommand("usp_GetUserProfile", con))
+                    {
+                        UserProfile userProfile=null;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@UserId", userId);
+
+                        // DML - CREATE DELETE UPDATE cmd.ExecuteNonQuery()
+                        // SELECT - cmd.ExecuteReader()
+                        // single - ExecuteSclar()
+                        using (SqlDataReader sdr = cmd.ExecuteReader())
+                        {
+                            while (sdr.Read())
+                            {
+                                userProfile = new UserProfile()
+                                {
+                                    Id = Convert.ToInt32(sdr["Id"]),
+                                    UserTypeId = Convert.ToInt32(sdr["UserTypeId"]),
+                                    UserType = Convert.ToString(sdr["UserType"]),
+                                    Name = Convert.ToString(sdr["Name"]),
+                                    EmailId = Convert.ToString(sdr["EmailId"]),
+                                    MobileNumber = Convert.ToString(sdr["MobileNumber"])
+                                };
+                            }
+                            return userProfile;
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
         public List<User> GetUsers()
         {
             throw new NotImplementedException();

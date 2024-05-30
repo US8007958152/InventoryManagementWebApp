@@ -1,9 +1,11 @@
 ﻿using InventoryManagementWebApp.Models;
+using InventoryWebApp.Commons;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace InventoryManagementWebApp.Controllers
 {
+    [SessionTimeOut]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
