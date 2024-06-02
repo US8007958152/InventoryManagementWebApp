@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="DBScripts\Fresh DB\" />
+    <Folder Include="DBScripts\Sprint DB Changes\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
