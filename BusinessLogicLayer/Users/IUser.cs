@@ -14,6 +14,6 @@ namespace BusinessLogicLayer.Users
         bool Delete(int userId);
         User GetUser(int userId);
         UserProfile GetUserProfile(int userId);
-        List<User> GetUsers();
+        List<UserViewModel> GetUsers();
     }
 }

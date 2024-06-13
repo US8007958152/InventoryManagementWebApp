@@ -2,7 +2,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddSession();
+
+// Add session service
+builder.Services.AddSession(option =>
+{
+    option.IdleTimeout=TimeSpan.FromMinutes(5);
+    //option.Cookie.Expiration=TimeSpan.FromMinutes(1);
+});
+
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 var app = builder.Build();
 
@@ -19,6 +26,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+// Session Middelware
 app.UseSession();
 app.UseAuthorization();
 

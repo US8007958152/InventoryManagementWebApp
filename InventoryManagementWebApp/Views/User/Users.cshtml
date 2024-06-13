@@ -1,1 +1,71 @@
-﻿<h1>Users View</h1>
+﻿@model List<Entities.Users.UserViewModel>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Users</h5>
+
+
+        <!-- Table with stripped rows -->
+        <table class="table datatable">
+            <thead>
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>Name</th>
+                    <th>User Type</th>
+                    <th data-type="date" data-format="YYYY/DD/MM">Mobile Number</th>
+                    <th>Email Id</th>
+                    <th>Active</th>
+                    <th>Deleted</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model?.Count() > 0)
+                {
+                    foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.Id</td>
+                            <td>@user.Name</td>
+                            <td>@user.UserType</td>
+                            <td>@user.MobileNumber</td>
+                            <td>@user.EmailId</td>
+                            <td>@user.IsActive</td>
+                            <td>@user.IsDeleted</td>
+                            <td>
+                                <button type="button" id="btnEdit" onclick="fnEditUser(@user.Id)">
+                                    <i class="ri-edit-2-line"></i>
+                                </button>
+                                <button type="button" id="btnView" onclick="fnViewUser(@user.Id)">
+                                     <i class="ri-eye-2-line"></i>
+                                </button>
+                                <button type="button" id="btnDelete" onclick="fnDeleteUser(@user.Id)">
+                                     <i class="ri-delete-bin-line"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        <!-- End Table with stripped rows -->
+
+    </div>
+</div>
+@section Scripts{
+    <script>
+        function fnEditUser(userId)
+        {
+            alert("Edit User Id: " + userId);
+        }
+        function fnViewUser(userId)
+        {
+            alert("View User Id: " + userId);
+        }
+        function fnDeleteUser(userId)
+        {
+            alert("Delete User Id: " + userId);
+        }
+    </script>
+}

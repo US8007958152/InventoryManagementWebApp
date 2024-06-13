@@ -126,9 +126,47 @@ namespace DataAccessLayer.Users
             }
         }
 
-        public List<User> GetUsers()
+        public List<UserViewModel> GetUsers()
         {
-            throw new NotImplementedException();
+            List<UserViewModel> users = new List<UserViewModel>();
+            try
+            {
+                // SQL COnnection
+                // Open COnnection
+                // Sql Command --> SQL Query or stored procedure
+                // Execute SQL
+                using (SqlConnection con = new SqlConnection(_inventoryDBConnString))
+                {
+                    if (con.State == ConnectionState.Closed)
+                        con.Open();
+                    using (SqlCommand cmd = new SqlCommand("usp_GetUsers", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        using(SqlDataReader sdr=cmd.ExecuteReader())
+                        {
+                            while(sdr.Read())
+                            {
+                                users.Add(new UserViewModel
+                                {
+                                    Id = Convert.ToInt32(sdr["Id"]),
+                                    Name = Convert.ToString(sdr["Name"]),
+                                    UserType = Convert.ToString(sdr["Title"]),
+                                    EmailId = Convert.ToString(sdr["EmailId"]),
+                                    MobileNumber = Convert.ToString(sdr["MobileNumber"]),
+                                    IsActive = Convert.ToBoolean(sdr["IsActive"]),
+                                    IsDeleted = Convert.ToBoolean(sdr["IsDeleted"])
+                                });
+                            }
+                        }
+
+                    }
+                    return users;
+                }
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public bool Update(User user)

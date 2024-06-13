@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer.Users;
 using DataAccessLayer.Users;
 using Entities.Users;
+using InventoryWebApp.Commons;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InventoryWebApp.Controllers
@@ -29,13 +30,13 @@ namespace InventoryWebApp.Controllers
         #endregion Constructors
 
         #region Common Web APIs     
-        
+        [SessionTimeOut]
         // Action methods
         [HttpGet]
         public IActionResult Users()
         {
-            // Business Logic
-           return RedirectToAction("Index","Home");
+            List<UserViewModel> users = _user.GetUsers();
+            return View(users);
         }
 
         [HttpGet]
