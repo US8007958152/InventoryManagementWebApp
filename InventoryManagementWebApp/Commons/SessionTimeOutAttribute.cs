@@ -10,8 +10,8 @@ namespace InventoryWebApp.Commons
         {
             UserProfile userProfile = SessionHelper.GetSession(context.HttpContext.Session);
             if(userProfile == null)
-            {
-                context.Result = new RedirectResult("/Authenticate/Login");
+            {                
+                context.Result = new RedirectResult("/Authenticate/Login?returnurl="+ context.HttpContext.Request.Path.Value);
                 return;
             }
         }

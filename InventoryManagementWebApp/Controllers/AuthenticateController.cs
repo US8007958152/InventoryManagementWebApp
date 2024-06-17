@@ -37,8 +37,9 @@ namespace InventoryWebApp.Controllers
         }
         #endregion Constructors
         [HttpGet]
-        public IActionResult Login()
+        public IActionResult Login(string returnurl)
         {
+           TempData["ReturnUrl"] = returnurl;
             LoginUser loginUser = new LoginUser();
             loginUser.UserName = HttpContext.Session.GetString("UserName");
             loginUser.Password = HttpContext.Session.GetString("Password");
@@ -71,6 +72,9 @@ namespace InventoryWebApp.Controllers
                     }
 
                     SessionHelper.SetSession(HttpContext.Session, userProfile);
+                    if(TempData["ReturnUrl"] != null)
+                        return Redirect(TempData["ReturnUrl"] as string);
+
                     return RedirectToAction("Index", "Home");
                 }
                 else if (statusCode == -401)
